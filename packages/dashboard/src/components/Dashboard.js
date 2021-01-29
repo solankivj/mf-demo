@@ -4,6 +4,7 @@ import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Link as RouterLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -27,9 +28,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Dashboard() {
+function Dashboard({count, dispatch}) {
   const classes = useStyles();
-
   return (
       <Container maxWidth="md" component="main" className={classes.heroContent}>
         <Typography
@@ -39,8 +39,9 @@ export default function Dashboard() {
           color="textPrimary"
           gutterBottom
         >
-          Dashboard
+          Dashboard Count {count}
         </Typography>
+        <button onClick={() => dispatch({ type: "INCREMENT" })}>Increment</button>
         <Typography
           variant="h5"
           align="center"
@@ -54,3 +55,5 @@ export default function Dashboard() {
       </Container>
   );
 }
+
+export default connect((state) => state)(Dashboard);

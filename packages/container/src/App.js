@@ -4,20 +4,25 @@ import {
   StylesProvider,
   createGenerateClassName,
 } from '@material-ui/core/styles';
-
+import { connect } from "react-redux";
 import DashboardApp from 'dashboard/DashboardApp';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
+
 
 const generateClassName = createGenerateClassName({
   productionPrefix: 'co',
 });
 
-const Home = () => (
+const Home =  connect(state => state)(({dispatch}) => (
+  <div style={{display: "flex"}}>
   <h1>Home</h1>
-)
+  <button onClick={() => dispatch({ type: "INCREMENT" })}>Increment</button>
+  </div>
+))
 
-export default () => {
+
+function App() {
   return (
     <BrowserRouter>
       <StylesProvider generateClassName={generateClassName}>
@@ -33,3 +38,5 @@ export default () => {
     </BrowserRouter>
   );
 };
+
+export default App;
