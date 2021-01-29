@@ -12,10 +12,10 @@ const devConfig = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'marketing',
+      name: 'dashboard',
       filename: 'remoteEntry.js',
       exposes: {
-        './MarketingApp': './src/components/DashboardRouteManager.js',
+        './DashboardApp': './src/components/DashboardRouteManager.js',
       },
       shared: packageJson.dependencies,
     }),

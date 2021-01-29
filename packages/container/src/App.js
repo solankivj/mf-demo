@@ -5,7 +5,7 @@ import {
   createGenerateClassName,
 } from '@material-ui/core/styles';
 
-import MarketingApp from 'marketing/MarketingApp';
+import DashboardApp from 'dashboard/DashboardApp';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 
@@ -26,7 +26,7 @@ export default () => {
             <Sidebar />
             <div>
               <Route exact path="/" component={Home} />
-              <MarketingApp />
+              <DashboardApp />
             </div>
           </div>
       </StylesProvider>
